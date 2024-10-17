@@ -1,0 +1,748 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+}
+
+/* ----------Header styling------------ */
+
+/* Base styles for the header */
+header {
+    display: flex;
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Align items vertically center */
+    padding: 10px 20px; /* Base padding */
+    background-color: #222; /* Dark background color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    position: relative; /* For positioning neon lights */
+}
+
+/* Neon glow effect for header */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3));
+    z-index: -1; /* Behind the header */
+    filter: blur(60px); /* Blur effect for a neon glow */
+}
+
+/* Header title styles */
+header h1 {
+    color: #00ffcc; /* Neon color for title */
+    font-size: 2rem; /* Base font size for title */
+    margin: 0; /* Remove default margin */
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.8), 0 0 20px rgba(0, 255, 204, 0.6); /* Neon glow effect */
+    transition: text-shadow 0.3s ease; /* Transition for hover effect */
+}
+
+/* Nav styles */
+header nav {
+    display: flex; /* Flex layout for navigation */
+}
+
+/* Style for the navigation list */
+header nav ul {
+    display: flex; /* Flex layout for nav items */
+    list-style: none; /* Remove bullet points */
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+}
+
+/* Style for each nav item */
+header nav ul li {
+    margin-left: 20px; /* Space between nav items */
+}
+
+/* Nav link styles */
+header nav a {
+    color: #fff; /* Nav link color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1rem; /* Base font size for links */
+    padding: 5px 10px; /* Padding around links */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, transform 0.3s; /* Transition for hover effects */
+}
+
+/* Hover effects for nav links */
+header nav a:hover {
+    background-color: rgba(0, 255, 255, 0.2); /* Light background on hover */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.5); /* Shadow effect on hover */
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none; /* Hide by default */
+    font-size: 1.5rem; /* Icon size */
+    background: none; /* No background */
+    border: none; /* No border */
+    color: #00ffcc; /* Icon color */
+    cursor: pointer; /* Change cursor on hover */
+    transition: transform 0.3s; /* Transition for hover effect */
+}
+
+/* Hover effect for hamburger */
+.hamburger:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    header {
+        justify-content: space-between; /* Maintain space between items */
+        flex-direction: row; /* Keep items in a row */
+    }
+
+    header h1 {
+        font-size: 1.8rem; /* Smaller title for mobile */
+        margin-bottom: 10px; /* Space below the title */
+    }
+
+    header nav {
+        width: 100%; /* Full width for nav */
+        display: none; /* Hide nav by default */
+    }
+
+    header nav ul {
+        flex-direction: column; /* Stack nav items vertically */
+        width: 100%; /* Full width */
+        padding: 0; /* Remove padding */
+    }
+
+    header nav ul li {
+        margin: 5px 0; /* Space between items */
+        text-align: center; /* Center align for mobile */
+        width: 100%; /* Full width for each item */
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger on mobile */
+        margin-left: auto; /* Push to the right */
+    }
+
+    nav.active {
+        display: flex; /* Show nav when active */
+    }
+}
+
+/* Tablet styles */
+@media (min-width: 481px) and (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem; /* Slightly larger title for tablets */
+    }
+
+    header nav ul li {
+        margin-left: 15px; /* Adjust spacing */
+    }
+
+    header nav a {
+        font-size: 1.1rem; /* Slightly larger nav links */
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+    header h1 {
+        font-size: 2.5rem; /* Normal title size for desktops */
+    }
+
+    header nav ul li {
+        margin-left: 30px; /* Normal spacing */
+    }
+
+    header nav a {
+        font-size: 1.2rem; /* Normal nav link size */
+    }
+}
+
+
+/*--------------- hero section-------------------- */
+.hero {
+    position: relative;
+    background: url('./resin.webp') no-repeat center center/cover;
+    height: 100vh; /* Full screen height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Overlay for better contrast */
+.hero .overlay {
+    position: absolute;
+    /* background-image: url(https://img.freepik.com/free-photo/majestic-mountain-peak-tranquil-winter-landscape-generated-by-ai_188544-15662.jpg) ; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1; /* Places the overlay behind content */
+}
+
+/* Container is now positioned above the overlay */
+.hero .container {
+    position: relative;
+    z-index: 2;
+    padding: 20px; /* Ensure there's internal padding inside the hero container */
+}
+
+/* .hero h2 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+} */
+
+.hero h2 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7); /* Added shadow for better contrast */
+}
+
+
+.hero p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto 40px; /* Added a 40px bottom margin to create more space below the paragraph */
+}
+
+.cta-button {
+    background-color: #ff6600;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 30px; /* Increased the margin-top to 30px to ensure spacing between button and paragraph */
+}
+
+.cta-button:hover {
+    background-color: #e65500;
+    transform: translateY(-5px); /* Slight lift on hover */
+}
+
+
+
+/* ----------------About------------------ */
+
+/* About Us Section */
+.about {
+    background: linear-gradient(135deg, #1d1d1d, #3e3e3e);
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.about-text {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #00ff99, 0 0 10px #00ff99;
+}
+
+.about p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    transition: color 0.3s ease;
+}
+
+.about p:hover {
+    color: #00ff99;
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 255, 153, 0.5), 0 0 30px rgba(0, 255, 153, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 255, 153, 0.7), 0 0 50px rgba(0, 255, 153, 0.5);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .about h2 {
+        font-size: 2rem;
+    }
+
+    .about p {
+        font-size: 1rem;
+    }
+
+    .about-image img {
+        width: 100%;
+    }
+}
+
+
+/* ------------------end of About---------- */
+
+/* -----------------Products--------------- */
+/* Products section styling */
+.products {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #ffffff, #f0f4f8); /* Light gradient background */
+    text-align: center;
+}
+
+.products h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #00ff99, 0 0 10px #00ff99;
+}
+
+.products p {
+    font-size: 1.2rem; /* Font size for description */
+    margin-bottom: 40px;
+    color: rgba(51, 51, 51, 0.7); /* Lighter shade for readability */
+}
+
+/* Product grid styling */
+.product-grid {
+    display: grid; /* Use CSS grid for layout */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between grid items */
+    margin: 0 auto; /* Center the grid */
+}
+
+/* Product card styling */
+.product-card {
+    background-color: rgb(227, 214, 181); /* Card background color */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    overflow: hidden; /* Crop overflow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    position: relative; /* For positioning of elements */
+}
+
+.product-card img {
+    width: 100%; /* Full width image */
+    height: auto; /* Maintain aspect ratio */
+    border-bottom: 5px solid #ff7e5f; /* Bottom border for visual separation */
+}
+
+.product-card h3 {
+    font-size: 1.5rem; /* Title font size */
+    margin: 15px 0; /* Spacing */
+    color: #ff7e5f; /* Stylish color for titles */
+}
+
+.product-card p {
+    padding: 0 15px; /* Side padding for description */
+    color: #666; /* Dark gray for description text */
+}
+
+.product-card .btn {
+    display: inline-block; /* Block display for button */
+    padding: 10px 20px; /* Button padding */
+    margin: 15px 0; /* Margin around button */
+    background-color: #ff7e5f; /* Button color */
+    color: white; /* White text */
+    text-decoration: none; /* Remove underline */
+    border-radius: 20px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for product cards */
+.product-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Increase shadow */
+}
+
+/* Hover effect for buttons */
+.product-card .btn:hover {
+    background-color: #ea0606; /* Lighter button color on hover */
+    transform: scale(1.05); /* Slightly larger button on hover */
+}
+
+
+/* ----------Footer----------- */
+footer {
+    background-color: #496861;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+}
+/* ------------------Contact -------------------*/
+
+/* Contact Section */
+.contact {
+    background: linear-gradient(135deg, #1d1d1d, #3e3e3e);
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #00ff99, 0 0 10px #00ff99;
+}
+
+.contact p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #ccc;
+}
+
+.form-group input:hover,
+.form-group textarea:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99;
+}
+
+.btn {
+    background-color: #00ff99;
+    color: #1d1d1d;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+}
+
+.btn:hover {
+    background-color: #00cc7a;
+    box-shadow: 0 0 15px #00ff99, 0 0 30px #00ff99;
+}
+
+.social-icons a{
+    text-decoration:none;
+    font-size:40px;
+    margin-top:50px;
+    margin-bottom: 15px;
+    margin-right:15px;
+    color:#1be5e2;
+    display:inline-block;
+    transition:transform 0.5s;
+          /* added on 26-06 */
+    animation: slideLeft 2s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+   }
+   .social-icons a:hover{
+    color:#ff004f;
+    /* transform:translateY(-5px); */
+    transform: scale(1.1); /* Scale effect on hover */
+   }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .contact h2 {
+        font-size: 2rem;
+    }
+
+    .contact p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 12px 25px;
+    }
+}
+
+/* ---------------Media Quaries for responsiveness------------ */
+
+/* ----------- General Responsive Styles ----------- */
+
+/* Mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px; /* Smaller base font size */
+    }
+
+    header h1 {
+        font-size: 1.8rem; /* Smaller header title */
+    }
+
+    header nav ul li {
+        margin-left: 15px; /* Reduce spacing between nav items */
+    }
+
+    .hero h2 {
+        font-size: 2.5rem; /* Smaller hero title */
+    }
+
+    .hero p {
+        font-size: 1.2rem; /* Smaller hero paragraph */
+    }
+
+    .cta-button {
+        padding: 10px 20px; /* Adjust button size */
+        font-size: 1rem; /* Smaller button text */
+    }
+
+    .about h2 {
+        font-size: 2rem; /* Smaller about section title */
+    }
+
+    .about p {
+        font-size: 0.9rem; /* Smaller about section paragraph */
+    }
+
+    .products h2 {
+        font-size: 2rem; /* Smaller product section title */
+    }
+
+    .products p {
+        font-size: 1rem; /* Smaller product section paragraph */
+    }
+
+    .product-card h3 {
+        font-size: 1.2rem; /* Smaller product title */
+    }
+
+    .contact h2 {
+        font-size: 2rem; /* Smaller contact section title */
+    }
+
+    .contact p {
+        font-size: 0.9rem; /* Smaller contact section paragraph */
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.9rem; /* Smaller input fields */
+    }
+
+    .btn {
+        padding: 10px 20px; /* Adjust button size */
+        font-size: 1rem; /* Smaller button text */
+    }
+
+    .social-icons a {
+        font-size: 30px; /* Smaller social icon size */
+    }
+}
+
+/* Tablets (min-width: 481px and max-width: 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem; /* Adjust header title */
+    }
+
+    header nav ul li {
+        margin-left: 20px; /* Adjust spacing */
+    }
+
+    .hero h2 {
+        font-size: 3rem; /* Adjust hero title */
+    }
+
+    .hero p {
+        font-size: 1.4rem; /* Adjust hero paragraph */
+    }
+
+    .cta-button {
+        padding: 12px 25px; /* Adjust button size */
+        font-size: 1.1rem; /* Button text size */
+    }
+
+    .about h2 {
+        font-size: 2.2rem; /* Adjust about section title */
+    }
+
+    .about p {
+        font-size: 1rem; /* Adjust about section paragraph */
+    }
+
+    .products h2 {
+        font-size: 2.2rem; /* Adjust product section title */
+    }
+
+    .products p {
+        font-size: 1.1rem; /* Adjust product section paragraph */
+    }
+
+    .product-card h3 {
+        font-size: 1.4rem; /* Adjust product title */
+    }
+
+    .contact h2 {
+        font-size: 2.2rem; /* Adjust contact section title */
+    }
+
+    .contact p {
+        font-size: 1rem; /* Adjust contact section paragraph */
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 1rem; /* Input fields size */
+    }
+
+    .btn {
+        padding: 12px 25px; /* Adjust button size */
+        font-size: 1.1rem; /* Button text size */
+    }
+
+    .social-icons a {
+        font-size: 35px; /* Adjust social icon size */
+    }
+}
+
+/* Desktops (min-width: 769px) */
+@media (min-width: 769px) {
+    body {
+        font-size: 16px; /* Base font size for larger screens */
+    }
+
+    header h1 {
+        font-size: 2.5rem; /* Header title */
+    }
+
+    header nav ul li {
+        margin-left: 30px; /* Normal spacing */
+    }
+
+    .hero h2 {
+        font-size: 4rem; /* Hero title */
+    }
+
+    .hero p {
+        font-size: 1.5rem; /* Hero paragraph */
+    }
+
+    .cta-button {
+        padding: 15px 30px; /* Normal button size */
+        font-size: 1.2rem; /* Button text size */
+    }
+
+    .about h2 {
+        font-size: 2.5rem; /* About section title */
+    }
+
+    .about p {
+        font-size: 1.1rem; /* About section paragraph */
+    }
+
+    .products h2 {
+        font-size: 2.5rem; /* Product section title */
+    }
+
+    .products p {
+        font-size: 1.2rem; /* Product section paragraph */
+    }
+
+    .product-card h3 {
+        font-size: 1.5rem; /* Product title */
+    }
+
+    .contact h2 {
+        font-size: 2.5rem; /* Contact section title */
+    }
+
+    .contact p {
+        font-size: 1.1rem; /* Contact section paragraph */
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 1rem; /* Input fields size */
+    }
+
+    .btn {
+        padding: 15px 30px; /* Normal button size */
+        font-size: 1.1rem; /* Button text size */
+    }
+
+    .social-icons a {
+        font-size: 40px; /* Normal social icon size */
+    }
+}
+
+
+
+
+
+
